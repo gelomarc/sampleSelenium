@@ -4,17 +4,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage {
-    private WebDriver webDriver;
+public class HomePage extends PageObject {
 
     @FindBy(id = "contact-link")
     private WebElement contactLinkButton;
 
-    public WebElement getContactLinkButton() {
-        return contactLinkButton;
+    public HomePage(WebDriver driver)
+    {
+        super(driver);
+
     }
 
-    public void setContactLinkButton(WebElement contactLinkButton) {
-        this.contactLinkButton = contactLinkButton;
+    public void clickContactLinkButton() {
+        contactLinkButton.click();
     }
 }
