@@ -16,7 +16,7 @@ public abstract class AbstractTest {
 
     @Before
     public void openPage() {
-        driver.get("http://automationpractice.com/index.php");
+        waiter.openPage("http://automationpractice.com/index.php");
     }
 
     @After
