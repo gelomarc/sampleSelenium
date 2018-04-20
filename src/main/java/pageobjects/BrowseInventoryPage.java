@@ -14,13 +14,22 @@ public class BrowseInventoryPage extends BasePage {
 
     List<WebElement> productsList;
 
+    public WebElement getProductElement(int index) {
+        setProductsList();
+        return productsList.get(index);
+    }
+
     public String getInventoryItemName(int index) {
-        productsList = driver.findElements(By.xpath("//ul[starts-with(@class, 'product_list')]/li"));
+        setProductsList();
         return productsList.get(index).findElement(By.xpath(".//a[@class = 'product-name']")).getText();
     }
 
     public String getInventoryPrice(int index) {
-        System.out.println();
+        setProductsList();
         return productsList.get(index).findElement(By.xpath(".//div[@class= 'right-block']//span[@class = 'price product-price']")).getText().substring(1);
+    }
+
+    private void setProductsList() {
+        productsList = driver.findElements(By.xpath("//ul[starts-with(@class, 'product_list')]/li"));
     }
 }

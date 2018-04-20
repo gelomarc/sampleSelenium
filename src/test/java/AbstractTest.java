@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageobjects.BrowseInventoryPage;
 import pageobjects.HomePage;
+import utils.Waiter;
 
 
 public abstract class AbstractTest {
@@ -11,6 +12,7 @@ public abstract class AbstractTest {
     WebDriver driver = new ChromeDriver();
     HomePage homePage = new HomePage(driver);
     BrowseInventoryPage browseInventoryPage = new BrowseInventoryPage(driver);
+    Waiter waiter = new Waiter(driver);
 
     @Before
     public void openPage() {

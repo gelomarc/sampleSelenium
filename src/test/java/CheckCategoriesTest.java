@@ -2,12 +2,12 @@ import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
 
-
 public class CheckCategoriesTest extends AbstractTest {
 
     @Test
     public void checkWomenCategoryTest() {
         browseInventoryPage.clickOnWomenCategory();
+        waiter.waitForElementToBeVisible(browseInventoryPage.getProductElement(0));
         assertEquals("Faded Short Sleeve T-shirts", browseInventoryPage.getInventoryItemName(0));
         assertEquals("16.51", browseInventoryPage.getInventoryPrice(0));
     }
