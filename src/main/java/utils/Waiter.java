@@ -20,6 +20,11 @@ public class Waiter {
         wait.until(arg0 -> element.isDisplayed());
     }
 
+    public void waitForElementToBeClickable(WebElement element) {
+        wait = new WebDriverWait(driver, TIMEOUT);
+        wait.until(arg0 -> element.is());
+    }
+
     public void waitForPageLoad() {
         wait = new WebDriverWait(driver, TIMEOUT);
         wait.until(driver1 -> String.valueOf(((JavascriptExecutor) driver1).executeScript("return document.readyState")).equals("complete"));
