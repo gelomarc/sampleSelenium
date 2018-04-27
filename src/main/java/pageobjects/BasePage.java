@@ -3,8 +3,20 @@ package pageobjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import utils.Waiter;
 
-public class BasePage extends PageObject {
+public abstract class BasePage {
+
+    protected WebDriver driver;
+
+    protected Waiter waiter;
+
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+        this.waiter = new Waiter(driver);
+        PageFactory.initElements(driver, this);
+    }
 
     @FindBy(id = "contact-link")
     private WebElement contactLinkButton;
@@ -30,36 +42,42 @@ public class BasePage extends PageObject {
     @FindBy(xpath = "//div[@id = 'block_top_menu']/ul/li[3]//a[@title = 'T-shirts']")
     private WebElement tshirtsCategory;
 
-    public BasePage(WebDriver driver) {
-        super(driver);
-    }
+    @FindBy(xpath = "//a[@class = 'login']")
+    private WebElement signIn;
 
     public void clickContactLinkButton() {
-        contactLinkButton.click();
+        waiter.click(contactLinkButton, driver);
     }
 
     public void enterTextAndSearch(String text) {
-        searchBox.sendKeys(text);
-        searchButton.click();
+        waiter.enterText(searchBox, driver, text);
+        waiter.click(searchButton, driver);
     }
 
     public void openCart() {
-        shoppingCart.click();
+        waiter.click(shoppingCart, driver);
     }
 
     public void clickOnLogo() {
-        logo.click();
+        waiter.click(logo, driver);
     }
 
-    public void clickOnWomenCategory() {
-        womenCategory.click();
+    public void openWomenCategory() {
+        waiter.click(womenCategory, driver);
+        waiter.waitForPageLoad();
     }
 
-    public void clickOnDressesCategory() {
-        dressesCategory.click();
+    public void openDressesCategory() {
+        waiter.click(dressesCategory, driver);
+        waiter.waitForPageLoad();
     }
 
-    public void clickOnTShirtsCategory() {
-        tshirtsCategory.click();
+    public void openTShirtsCategory() {
+        waiter.click(tshirtsCategory, driver);
+        waiter.waitForPageLoad();
+    }
+
+    public void clickOnSignIn() {
+        waiter.click(signIn, driver);
     }
 }

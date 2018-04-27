@@ -6,22 +6,21 @@ public class CheckCategoriesTest extends AbstractTest {
 
     @Test
     public void checkWomenCategoryTest() {
-        browseInventoryPage.clickOnWomenCategory();
-        waiter.waitForElementToBeVisible(browseInventoryPage.getProductElement(0));
+        browseInventoryPage.openWomenCategory();
         assertEquals("Faded Short Sleeve T-shirts", browseInventoryPage.getInventoryItemName(0));
         assertEquals("16.51", browseInventoryPage.getInventoryPrice(0));
     }
 
     @Test
     public void checkDressCategoryTest() {
-        browseInventoryPage.clickOnDressesCategory();
+        browseInventoryPage.openDressesCategory();
         assertEquals("Printed Dress", browseInventoryPage.getInventoryItemName(0));
         assertEquals("26.00", browseInventoryPage.getInventoryPrice(0));
     }
 
     @Test
     public void checkTShirtsCategoryTest() {
-        browseInventoryPage.clickOnTShirtsCategory();
+        browseInventoryPage.openTShirtsCategory();
         assertEquals("Faded Short Sleeve T-shirts", browseInventoryPage.getInventoryItemName(0));
         assertEquals("16.51", browseInventoryPage.getInventoryPrice(0));
     }
