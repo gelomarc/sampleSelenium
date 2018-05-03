@@ -4,6 +4,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static junit.framework.Assert.assertEquals;
@@ -41,8 +42,39 @@ public class Waiter {
         ExpectedCondition<Boolean> elementIsActive = arg0 ->
         {
             try {
+                element.clear();
                 element.sendKeys(text);
-                assertEquals(text, element.getText());
+                assertEquals(text, element.getAttribute("value"));
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        };
+        wait.until(elementIsActive);
+    }
+
+    public void selectFromDropdownByValue(WebElement element, WebDriver driver, String text) {
+        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+        Select select = new Select(element);
+        ExpectedCondition<Boolean> elementIsActive = arg0 ->
+        {
+            try {
+                select.selectByValue(text);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        };
+        wait.until(elementIsActive);
+    }
+
+    public void selectFromDropdownByText(WebElement element, WebDriver driver, String text) {
+        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+        Select select = new Select(element);
+        ExpectedCondition<Boolean> elementIsActive = arg0 ->
+        {
+            try {
+                select.selectByVisibleText(text);
                 return true;
             } catch (Exception e) {
                 return false;

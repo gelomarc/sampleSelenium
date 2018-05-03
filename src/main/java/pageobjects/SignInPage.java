@@ -11,9 +11,28 @@ public class SignInPage extends BasePage {
     }
 
     @FindBy(id = "email_create")
-    private WebElement emailAddress;
+    private WebElement createAccountEmailAddress;
 
-    public void enterEmail(String email) {
-        waiter.enterText(emailAddress, driver, email);
+    @FindBy(id = "SubmitCreate")
+    private WebElement createAccountButton;
+
+    @FindBy(id = "email")
+    private WebElement signInEmail;
+
+    @FindBy(id = "passwd")
+    private WebElement signInPassword;
+
+    @FindBy(id = "SubmitLogin")
+    private WebElement signInButton;
+
+    public void openSignUpForm(String email) {
+        waiter.enterText(createAccountEmailAddress, driver, email);
+        waiter.click(createAccountButton, driver);
+    }
+
+    public void signIn(String email, String password) {
+        waiter.enterText(signInEmail, driver, email);
+        waiter.enterText(signInPassword, driver, password);
+        waiter.click(signInButton, driver);
     }
 }

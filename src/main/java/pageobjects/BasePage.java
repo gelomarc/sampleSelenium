@@ -45,6 +45,12 @@ public abstract class BasePage {
     @FindBy(xpath = "//a[@class = 'login']")
     private WebElement signIn;
 
+    @FindBy(xpath = "//a[@class = 'View my customer account']")
+    private WebElement openAccount;
+
+    @FindBy(xpath = "//*[@title = 'Log me out']")
+    private WebElement signOut;
+
     public void clickContactLinkButton() {
         waiter.click(contactLinkButton, driver);
     }
@@ -79,5 +85,13 @@ public abstract class BasePage {
 
     public void clickOnSignIn() {
         waiter.click(signIn, driver);
+    }
+
+    public void openMyAccount() {
+        waiter.click(openAccount, driver);
+    }
+
+    public void clickOnSignOut() {
+        waiter.click(signOut, driver);
     }
 }

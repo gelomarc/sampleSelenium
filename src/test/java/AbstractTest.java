@@ -2,9 +2,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pageobjects.BrowseInventoryPage;
-import pageobjects.HomePage;
-import pageobjects.SignInPage;
+import pageobjects.*;
 import utils.Waiter;
 
 
@@ -15,6 +13,10 @@ public abstract class AbstractTest {
     BrowseInventoryPage browseInventoryPage = new BrowseInventoryPage(driver);
     Waiter waiter = new Waiter(driver);
     SignInPage signInPage = new SignInPage(driver);
+    SignUpPage signUpPage = new SignUpPage(driver);
+    MyAccountPage myAccountPage = new MyAccountPage(driver);
+    MyPersonalDetails myPersonalDetails = new MyPersonalDetails(driver);
+    MyAddresses myAddresses = new MyAddresses(driver);
 
     @Before
     public void openPage() {
