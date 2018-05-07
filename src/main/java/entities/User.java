@@ -18,8 +18,8 @@ public class User {
     public User() {
         this.email = generateRandomEmail();
         this.password = generateRandomString(12);
-        this.firstName = "firstName" + generateRandomLetters(8);
-        this.lastName = "lastName" + generateRandomLetters(8);
+        this.firstName = getProperty("firstName") + generateRandomLetters(8);
+        this.lastName = getProperty("lastName") + generateRandomLetters(8);
         this.title = getRandomTitle();
         this.birthDate = generateRandomBirthDate();
         this.address = new Address(firstName, lastName);

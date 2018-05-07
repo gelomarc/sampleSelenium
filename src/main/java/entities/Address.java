@@ -20,14 +20,14 @@ public class Address {
     public Address(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.company = "company " + generateRandomLetters(10);
-        this.addressLineOne = "Address Line 1 " + generateRandomLetters(10);
-        this.addressLineTwo = "Address Line 2 " + generateRandomLetters(10);
-        this.city = "city " + generateRandomLetters(10);
-        this.state = "Iowa";
-        this.country = "United States";
+        this.company = getProperty("company") + generateRandomLetters(10);
+        this.addressLineOne = getProperty("addressLine1") + generateRandomLetters(10);
+        this.addressLineTwo = getProperty("addressLine2") + generateRandomLetters(10);
+        this.city = getProperty("city") + generateRandomLetters(10);
+        this.state = getProperty("state");
+        this.country = getProperty("country");
         this.postalCode = generateRandomNumber(5);
-        this.additionalInfo = "additional Info" + generateRandomString(40);
+        this.additionalInfo = getProperty("additionalInfo") + generateRandomString(40);
         this.homePhone = generateRandomNumber(9);
         this.mobilePhone = generateRandomNumber(9);
         this.addressAlias = generateRandomString(10);

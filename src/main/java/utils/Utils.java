@@ -2,7 +2,10 @@ package utils;
 
 import org.apache.commons.text.RandomStringGenerator;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Properties;
 import java.util.Random;
 
 import static org.apache.commons.text.CharacterPredicates.*;
@@ -12,6 +15,7 @@ public class Utils {
     static RandomStringGenerator generator = new RandomStringGenerator.Builder().filteredBy(ASCII_ALPHA_NUMERALS).build();
     static RandomStringGenerator numberGenerator = new RandomStringGenerator.Builder().filteredBy(ARABIC_NUMERALS).build();
     static RandomStringGenerator letterGenerator = new RandomStringGenerator.Builder().filteredBy(ASCII_LETTERS).build();
+    static Properties properties = new Properties();
 
     public static String generateRandomEmail() {
         return "test+" + generator.generate(20) + "@test.com";
@@ -40,4 +44,12 @@ public class Utils {
         return randomBirthDate;
     }
 
+    public static String getProperty(String propertyName) {
+        try {
+            properties.load(new FileInputStream(Thread.currentThread().getContextClassLoader().getResource("user.properties").getPath()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return properties.getProperty(propertyName);
+    }
 }
